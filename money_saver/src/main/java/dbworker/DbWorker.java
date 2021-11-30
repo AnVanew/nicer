@@ -10,7 +10,7 @@ public abstract class DbWorker {
     private Connection getConnection(){
         try {
             Class.forName("org.h2.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:h2:/home/naicinfa/prog/naicer/db/naicdb",
+            Connection connection = DriverManager.getConnection("jdbc:h2:/home/naicinfa/prog/nicer/db/naicdb",
                                                             "admin", "admin");
             return connection;
         } catch (Exception e){
