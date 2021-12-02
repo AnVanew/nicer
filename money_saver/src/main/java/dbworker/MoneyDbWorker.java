@@ -33,14 +33,24 @@ public class MoneyDbWorker extends DbWorker{
                 });
     }
 
+    public int addMoneyRecById(Money money, int user_id){
+        return executeQueryUpdate("INSERT INTO moneys (category, number, user_id, date) VALUES (?, ?, ?, ?)",
+                (preparedStatement) ->{
+                    preparedStatement.setString(1, money.getCategory().getDescription());
+                    preparedStatement.setInt(2, money.getNumber());
+                    preparedStatement.setDate(4, new java.sql.Date(money.getDate().getTime()));
+                    preparedStatement.setInt(3, user_id);
+                });
+    }
+
     public void deleteMoneyRecById(int id){
         executeQueryUpdate("DELETE FROM moneys WHERE id = ?",
                 preparedStatement -> preparedStatement.setInt(1, id));
     }
 
     private static Money moneyEntityFromResultSet(ResultSet resultSet) throws SQLException {
-        Money moneyEntity = Money.builder()
-                .category(resultSet.getString("category"))
+        Money moneyEntity = Money.builder()  
+                .category(Category.getByDescription(resultSet.getString("category")).get())
                 .number(resultSet.getInt("number"))
                 .date(resultSet.getDate("date"))
                 .build();

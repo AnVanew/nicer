@@ -11,8 +11,8 @@ import java.sql.Date;
 @ToString
 public class Money {
 
-    private String category;
+    private Category category;
     private int number;
     private Date date;
-    
+
 }

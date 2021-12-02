@@ -20,9 +20,24 @@
             for (Money m : money) {
                 out.println("<li>" + m + "</li>");
             }
+        } else {
+            out.print("No money")
         }
     %>
 </ul>
+
+<form method="post">
+    <label>Category:
+        <input type="text" name="name"><br />
+    </label>
+    <label>Value:
+        <input type="password" name="pass"><br />
+    </label>
+    <label>Date:
+        <input type="password" name="pass"><br />
+    </label>
+    <button type="submit">Submit</button>
+</form>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package entity;
 
-import lombok.Data;
+import java.util.Arrays;
+import java.util.Optional;
 
 public enum Category {
     FOOD("food"),
@@ -22,5 +23,9 @@ public enum Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public static Optional<Category> getByDescription(String description){
+        return Arrays.stream(Category.values()).filter((money) -> money.getDescription().equalsIgnoreCase(description)).findFirst();
     }
 }
