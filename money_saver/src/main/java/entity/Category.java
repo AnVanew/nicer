@@ -25,7 +25,7 @@ public enum Category {
         this.description = description;
     }
 
-    public static Optional<Category> getByDescription(String description){
-        return Arrays.stream(Category.values()).filter((money) -> money.getDescription().equalsIgnoreCase(description)).findFirst();
+    public static Category getByDescription(String description){
+        return Arrays.stream(Category.values()).filter((money) -> money.getDescription().equalsIgnoreCase(description)).findFirst().orElse(null);
     }
 }

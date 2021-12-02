@@ -19,6 +19,10 @@ public class MoneyService {
         moneyDbWorker.addMoneyRecById(category, sum, date, userId);
     }
 
+    public void addMoneyRecord(Money money, int userId){
+        moneyDbWorker.addMoneyRecById(money, userId);
+    }
+
     public void deleteMoneyRecord(int id){
         moneyDbWorker.deleteMoneyRecById(id);
     }

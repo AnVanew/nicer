@@ -11,6 +11,17 @@
 
     <servlet-mapping>
         <servlet-name>allMoneyServlet</servlet-name>
-        <url-pattern>/allMoney</url-pattern>
+        <url-pattern>/main_money</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteMoneyServlet</servlet-name>
+        <servlet-class>servlets.DeleteMoneyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteMoneyServlet</servlet-name>
+        <url-pattern>/deleteMoney</url-pattern>
+    </servlet-mapping>
+
 </web-app>

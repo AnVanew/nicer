@@ -50,9 +50,10 @@ public class MoneyDbWorker extends DbWorker{
 
     private static Money moneyEntityFromResultSet(ResultSet resultSet) throws SQLException {
         Money moneyEntity = Money.builder()  
-                .category(Category.getByDescription(resultSet.getString("category")).get())
+                .category(Category.getByDescription(resultSet.getString("category")))
                 .number(resultSet.getInt("number"))
                 .date(resultSet.getDate("date"))
+                .id(resultSet.getInt("id"))
                 .build();
         return moneyEntity;
     }

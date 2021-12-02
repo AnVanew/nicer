@@ -18,25 +18,30 @@
 
         if (money != null && !money.isEmpty()) {
             for (Money m : money) {
-                out.println("<li>" + m + "</li>");
+                out.println("<li>" + m +
+                        "<form method=\"post\" action=\"/deleteMoney\">\n" +
+                        "    <input type=\"hidden\" name=\"id\" value=\"" + m.getId()+ "\" ><br />\n" +
+                        "    <button type=\"submit\">Delete</button>\n" +
+                        "</form> " +
+                        "</li>");
             }
         } else {
-            out.print("No money")
+            out.print("No money");
         }
     %>
 </ul>
 
 <form method="post">
     <label>Category:
-        <input type="text" name="name"><br />
+        <input type="text" name="category"><br />
     </label>
     <label>Value:
-        <input type="password" name="pass"><br />
+        <input type="number" name="number"><br />
     </label>
     <label>Date:
-        <input type="password" name="pass"><br />
+        <input type="date" name="date"><br />
     </label>
-    <button type="submit">Submit</button>
+    <button type="submit">Add</button>
 </form>
 
 </body>
