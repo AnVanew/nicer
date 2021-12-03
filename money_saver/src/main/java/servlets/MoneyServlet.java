@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -20,8 +21,10 @@ public class MoneyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Money> allMoney = moneyService.getAllMoney(Integer.valueOf(1));
+        List<Category> categories = Arrays.asList(Category.values());
 
         request.setAttribute("allMoney", allMoney);
+        request.setAttribute("categories", categories);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/MoneyMainPage.jsp");
         requestDispatcher.forward(request, response);
     }

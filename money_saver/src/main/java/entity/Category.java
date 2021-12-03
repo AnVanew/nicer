@@ -3,13 +3,15 @@ package entity;
 import java.util.Arrays;
 import java.util.Optional;
 
+import static utill.Constants.*;
+
 public enum Category {
-    FOOD("food"),
-    TRANSPORT("transport"),
-    HOME("home"),
-    COMMUNAL_PAYMENTS("comm.pay"),
-    CAR("car"),
-    DOG("dog");
+    FOOD (FOOD_DESCRIPTION),
+    TRANSPORT (TRANSPORT_DESCRIPTION),
+    HOME (HOME_DESCRIPTION),
+    COMMUNAL_PAYMENTS (COMMUNAL_PAYMENTS_DESCRIPTION),
+    CAR (CAR_DESCRIPTION),
+    PETS (PET_DESCRIPTION);
 
     Category(String description) {
         this.description = description;

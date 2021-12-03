@@ -2,16 +2,17 @@ package dbworker;
 
 import entity.Category;
 import entity.Money;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static utill.Queries.*;
+
 public class MoneyDbWorker extends DbWorker{
     public List<Money> getAllMoneyById(int id){
-       return executeQueryGet("SELECT * FROM MONEYS WHERE USER_ID = ?" ,
+       return executeQueryGet(SELECT_ALL_MONEY_BY_ID_QUERY ,
                 (preparedStatement) -> {preparedStatement.setInt(1,id);},
                 (resultSet) -> {
                     List<Money> money = new ArrayList<>();
@@ -24,27 +25,27 @@ public class MoneyDbWorker extends DbWorker{
     }
 
     public int addMoneyRecById(Category category, int number, Date date, int user_id){
-        return executeQueryUpdate("INSERT INTO moneys (category, number, user_id, date) VALUES (?, ?, ?, ?)",
+        return executeQueryUpdate(INSERT_MONEY_QUERY,
                 (preparedStatement) ->{
                     preparedStatement.setString(1, category.getDescription());
                     preparedStatement.setInt(2, number);
-                    preparedStatement.setDate(4, new java.sql.Date(date.getTime()));
-                    preparedStatement.setInt(3, user_id);
+                    preparedStatement.setDate(3, new java.sql.Date(date.getTime()));
+                    preparedStatement.setInt(4, user_id);
                 });
     }
 
     public int addMoneyRecById(Money money, int user_id){
-        return executeQueryUpdate("INSERT INTO moneys (category, number, user_id, date) VALUES (?, ?, ?, ?)",
+        return executeQueryUpdate(INSERT_MONEY_QUERY,
                 (preparedStatement) ->{
                     preparedStatement.setString(1, money.getCategory().getDescription());
                     preparedStatement.setInt(2, money.getNumber());
-                    preparedStatement.setDate(4, new java.sql.Date(money.getDate().getTime()));
-                    preparedStatement.setInt(3, user_id);
+                    preparedStatement.setDate(3, new java.sql.Date(money.getDate().getTime()));
+                    preparedStatement.setInt(4, user_id);
                 });
     }
 
     public void deleteMoneyRecById(int id){
-        executeQueryUpdate("DELETE FROM moneys WHERE id = ?",
+        executeQueryUpdate(DELETE_MONEY_BY_ID_QUERY,
                 preparedStatement -> preparedStatement.setInt(1, id));
     }
 
