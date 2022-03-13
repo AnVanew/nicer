@@ -23,10 +23,6 @@ public enum Category {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public static Category getByDescription(String description){
         return Arrays.stream(Category.values()).filter((money) -> money.getDescription().equalsIgnoreCase(description)).findFirst().orElse(null);
     }
